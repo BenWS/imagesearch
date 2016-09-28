@@ -14,6 +14,13 @@ app.get('/imageSearch/:searchTerms', function(request, response) {
 
     mongo.connect('mongodb://heroku_sv3gzsts:ghanjlbubvodkmbra92slljng9@ds041536.mlab.com:41536/heroku_sv3gzsts', function (err, db) {
         
+        var offset
+        if (isNaN(request.query.offset)) {
+            offset = 0;
+        } else {
+            offset = request.query.offset;
+        }
+        
         //google api request URL
          var apiRequest = "https://www.googleapis.com/customsearch/v1?q=+" + request.params.searchTerms + 
         "&cx=006801059266696537146%3Adp5kyaaobiw&num=10&searchType=image&start=" + (1 + request.query.offset*10) +
