@@ -1,0 +1,26 @@
+{
+  "name": "imagesearch",
+  "version": "1.0.0",
+  "description": "Tool for obtaining image data related to provided search term",
+  "main": "server.js",
+  "scripts": {
+    "test": "node server.js",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BenWS/imagesearch.git"
+  },
+  "author": "Ben Shippey",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/BenWS/imagesearch/issues"
+  },
+  "homepage": "https://github.com/BenWS/imagesearch#readme",
+  "dependencies": {
+    "dateformat": "^1.0.12",
+    "express": "^4.14.0",
+    "mongodb": "^2.2.10",
+    "request": "^2.75.0"
+  }
+}

@@ -9,7 +9,7 @@ var dateformat = require('dateformat');
 //logs search terms and time search was made whenever user visits path
 app.get('/imageSearch/:searchTerms', function(request, response) {
 
-    mongo.connect('mongodb://localhost:27017/' + 'local', function (err, db) {
+    mongo.connect('mongodb://heroku_sv3gzsts:ghanjlbubvodkmbra92slljng9@ds041536.mlab.com:41536/heroku_sv3gzsts', function (err, db) {
         
         var currentTime = dateformat(Date.now(),"isoDateTime");
         
@@ -59,7 +59,7 @@ app.get('/imageSearch/:searchTerms', function(request, response) {
 
 app.get('/imageSearch', function (request, response) {
     
-    mongo.connect('mongodb://localhost:27017/' + 'local', function (err, db) {
+    mongo.connect('mongodb://heroku_sv3gzsts:ghanjlbubvodkmbra92slljng9@ds041536.mlab.com:41536/heroku_sv3gzsts', function (err, db) {
         
         var searchHistory = db.collection("searchHistory");
         
@@ -71,4 +71,4 @@ app.get('/imageSearch', function (request, response) {
     })
 })
 
-app.listen(8080);
+app.listen(rocess.env.PORT);
