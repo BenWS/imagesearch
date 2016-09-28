@@ -52,8 +52,7 @@ app.get('/imageSearch/:searchTerms', function(request, response) {
                 response.end();
                 
             } else if (httpResponse.statusCode == 400) {
-                response.send(httpResponse.statusCode + ' Bad Request:' + httpResponse.statusMessage);
-                response.end(apiRequest);
+                response.end(httpResponse.statusCode + httpResponse.statusMessage + ', Request URL: ' + apiRequest);
             }
         })
         
