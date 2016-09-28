@@ -1,4 +1,7 @@
-//url to make request with: https://www.googleapis.com/customsearch/v1?q=spacex&cx=006801059266696537146%3Adp5kyaaobiw&searchType=image&key=AIzaSyAbMY7RMmAbTSOrDCyVKRn9HR-ug4TLoBQ
+//9-27-16: Image search not working - the URL is working fine in the browser:
+
+//https://www.googleapis.com/customsearch/v1?q=cats&cx=006801059266696537146%3Adp5kyaaobiw&num=10&searchType=image&fields
+//=items(formattedUrl%2Cimage(contextLink%2CthumbnailLink)%2Clink%2Csnippet)&key=AIzaSyAbMY7RMmAbTSOrDCyVKRn9HR-ug4TLoBQ
 
 var express = require('express');
 var app = express();
@@ -46,7 +49,7 @@ app.get('/imageSearch/:searchTerms', function(request, response) {
                 response.end();
                 
             } else if (httpResponse.statusCode == 400) {
-                response.end(httpResponse.statusCode + ' Bad Request');
+                response.end(httpResponse.statusCode + ' Bad Request:' + httpResponse.statusMessage);
             }
         })
         
