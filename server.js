@@ -14,11 +14,17 @@ app.get('/imageSearch/:searchTerms', function(request, response) {
 
     mongo.connect('mongodb://heroku_sv3gzsts:ghanjlbubvodkmbra92slljng9@ds041536.mlab.com:41536/heroku_sv3gzsts', function (err, db) {
         
+        //google api request URL
+         var apiRequest = "https://www.googleapis.com/customsearch/v1?q=+" + request.params.searchTerms + 
+        "&cx=006801059266696537146%3Adp5kyaaobiw&num=10&searchType=image&start=" + (1 + request.query.offset*10) +
+        "&fields=items(formattedUrl%2Cimage(contextLink%2CthumbnailLink)%2Clink%2Csnippet)" +
+        "&key=AIzaSyAbMY7RMmAbTSOrDCyVKRn9HR-ug4TLoBQ";
+        
+        //creating record of search
         var currentTime = dateformat(Date.now(),"isoDateTime");
-        
-        
         var searchHistory = db.collection("searchHistory");
         searchHistory.insert({"terms":request.params.searchTerms, "when":currentTime});
+        
         
         //image search request
         httpRequest("https://www.googleapis.com/customsearch/v1?q=+" + request.params.searchTerms + 
@@ -49,7 +55,8 @@ app.get('/imageSearch/:searchTerms', function(request, response) {
                 response.end();
                 
             } else if (httpResponse.statusCode == 400) {
-                response.end(httpResponse.statusCode + ' Bad Request:' + httpResponse.statusMessage);
+                response.send(httpResponse.statusCode + ' Bad Request:' + httpResponse.statusMessage);
+                response.end(apiRequest);
             }
         })
         
