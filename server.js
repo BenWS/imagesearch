@@ -27,10 +27,7 @@ app.get('/imageSearch/:searchTerms', function(request, response) {
         
         
         //image search request
-        httpRequest("https://www.googleapis.com/customsearch/v1?q=+" + request.params.searchTerms + 
-        "&cx=006801059266696537146%3Adp5kyaaobiw&num=10&searchType=image&start=" + (1 + request.query.offset*10) +
-        "&fields=items(formattedUrl%2Cimage(contextLink%2CthumbnailLink)%2Clink%2Csnippet)" +
-        "&key=AIzaSyAbMY7RMmAbTSOrDCyVKRn9HR-ug4TLoBQ", 
+        httpRequest(apiRequest, 
         (error, httpResponse, body) => {
                 
             var result = JSON.parse(body);
