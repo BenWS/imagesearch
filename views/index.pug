@@ -1,0 +1,18 @@
+doctype 5
+html
+  head
+    style code {background-color:#eeeeee;}
+  body
+    div(style = "font-family:arial")
+      h2(style = "color:#61B329") Image Search Abstraction Layer
+      p Search for images matching provided search terms:
+      code https://benws-imagesearch.herokuapp.com/imagesearch/{search terms}
+      p In addition, user may paginate through results by specifying a value for the 'offset' parameter, e.g.
+      code https://benws-imagesearch.herokuapp.com/imagesearch/{search terms}?#[strong offset={page number}]
+      p User may also view up to the 10 most recent queries through leaving out search terms:
+      code https://benws-imagesearch.herokuapp.com/imagesearch/
+      h4 Example Usage:
+      p Search for 'mountain' images:
+      code https://benws-imagesearch.herokuapp.com/imagesearch/mountain
+      p This returns a result array, sample:
+      code {"url":"https://static.pexels.com/photos/4164/landscape-mountains-nature-mountain.jpeg", "alt":"Mountain Pictures · Pexels ...", "contextLink":"https://www.pexels.com/search/mountain/", "thumbnailLink":"https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcRldi0IAfQQHDYoX2Aq_F9QFjm3qy4VR15v5CPy30YdJzPSLd5_KrvSjYWc"}

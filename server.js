@@ -9,6 +9,14 @@ var httpRequest = require('request');
 var mongo = require('mongodb').MongoClient;
 var dateformat = require('dateformat');
 
+//set view directory
+app.set("views", "./views");
+app.set("view engine", "pug");
+
+app.get("/index", function(req,res) {
+    res.render("index");
+});
+
 //logs search terms and time search was made whenever user visits path
 app.get('/imageSearch/:searchTerms', function(request, response) {
 
@@ -83,5 +91,10 @@ app.get('/imageSearch', function (request, response) {
         db.close();
     })
 })
+
+app.get("/*", function(req,res) {
+  res.redirect("/index");
+  // res.end("This is the index page");
+});
 
 app.listen(process.env.PORT);
